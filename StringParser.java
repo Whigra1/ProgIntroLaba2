@@ -12,7 +12,7 @@ public class StringParser {
                 if (i > 0){
                     if(Character.isDigit(str_arr[i+1]) && Character.isDigit(str_arr[i-1]))
                         res.add(Character.toString(str_arr[i]));
-                    else if(str_arr[i-1] == '*')
+                    else if(str_arr[i-1] == '*' || str_arr[i-1] == '(')
                         res.add(str_arr[i] + "" + parseDigit(str_arr,i + 1));
                     else if(!Character.isDigit(str_arr[i-1]))
                         res.add(Character.toString(str_arr[i]));
