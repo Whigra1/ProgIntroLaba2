@@ -40,7 +40,7 @@ public class StringParser {
             num += arr[temp];
             arr[temp] = ';';
             temp++;
-            if (temp >= arr.length - 1)
+            if (temp >= arr.length)
                 break;
         }
         return num;
