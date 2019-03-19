@@ -8,24 +8,20 @@ public class StringParser {
         for (int i = 0;i < str_arr.length;i++){
             if (str_arr[i] == ';')
                 continue;
-            if (str_arr[i] == '-'){
-                if (i > 0){
-                    if(Character.isDigit(str_arr[i+1]) && Character.isDigit(str_arr[i-1]))
-                        res.add(Character.toString(str_arr[i]));
-                    else if(str_arr[i-1] == '*' || str_arr[i-1] == '(')
+           if (str_arr[i] == '-'){
+                if (i > 0)
+                    if((str_arr[i-1] == '*' || str_arr[i-1] == '(') &&
+                            Character.isDigit(str_arr[i+1]))
                         res.add(str_arr[i] + "" + parseDigit(str_arr,i + 1));
-                    else if(!Character.isDigit(str_arr[i-1]))
-                        res.add(Character.toString(str_arr[i]));
                     else
-                        res.add(str_arr[i] + "" + parseDigit(str_arr,i + 1));
-                }
-                else if (i == 0){
+                        res.add(Character.toString(str_arr[i]));
+                else if (i == 0)
                     if (Character.isDigit(str_arr[i + 1]))
                         res.add(str_arr[i] + "" + parseDigit(str_arr,i + 1));
-                }
                 else
                     res.add(Character.toString(str_arr[i]));
             }
+          
             else if(Character.isDigit(str_arr[i]))
                 res.add(parseDigit(str_arr,i));
             else
