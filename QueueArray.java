@@ -46,15 +46,6 @@ public class QueueArray<E> {
         return size;
     }
 
-    public static void main(String[] args) {
-        QueueArray<Integer> q = new QueueArray<>(10);
-        q.add(5);
-        q.add(7);
-        q.add(8);
-        q.pop();
-        q.print();
-    }
-
 }
 
 

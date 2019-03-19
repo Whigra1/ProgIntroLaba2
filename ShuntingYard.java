@@ -22,7 +22,7 @@ public class ShuntingYard {
         return (ops.containsKey(sub) && ops.get(sub).precedence >= ops.get(op).precedence);
     }
 
-    public static void toPostfix(String str){
+    public static QueueArray toPostfix(String str){
         ArrayList<String> tokens = StringParser.parseString(str);
         StackArray<String> s = new StackArray<>(tokens.size());
         QueueArray<String> q = new QueueArray<>(tokens.size());
@@ -49,12 +49,7 @@ public class ShuntingYard {
         for (int i = 0; i < size;i++){
             q.add(s.pop());
         }
-        //System.out.println(q);
-        q.print();
-
+        return q;
     }
 
-    public static void main(String[] args) {
-        toPostfix("((((1*(2+3))-3)+4)*5)");
-    }
 }
