@@ -15,6 +15,8 @@ public class Main {
             String elem = tokens.pop();
             if (StringParser.isDigit(elem))
                 s.push(elem);
+            else if(elem.equals("!"))
+                s.push(String.valueOf(Double.parseDouble(s.pop()) * -1));
             else {
                 double a = Double.parseDouble(s.pop());
                 double b = Double.parseDouble(s.pop());
