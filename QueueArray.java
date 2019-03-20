@@ -1,4 +1,4 @@
-package OOOP3;
+﻿package laba2;
 // Реалізація черги на массивах
 public class QueueArray<E> {
     private int first = 0;
