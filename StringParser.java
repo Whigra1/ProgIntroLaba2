@@ -1,3 +1,5 @@
+package laba2;
+
 import java.util.ArrayList;
 
 public class StringParser {
@@ -8,12 +10,12 @@ public class StringParser {
         for (int i = 0;i < str_arr.length;i++){
             if (str_arr[i] == ';')
                 continue;
-           if (str_arr[i] == '-'){
+            if (str_arr[i] == '-'){
                 if (i > 0)
                     if((str_arr[i-1] == '*' || str_arr[i-1] == '(') &&
                             Character.isDigit(str_arr[i+1]))
                         res.add(str_arr[i] + "" + parseDigit(str_arr,i + 1));
-                    else if(str_arr[i + 1] == '(')
+                    else if(str_arr[i + 1] == '(' )
                         res.add("!");
                     else
                         res.add(Character.toString(str_arr[i]));
@@ -25,9 +27,15 @@ public class StringParser {
                 else
                     res.add(Character.toString(str_arr[i]));
             }
-          
             else if(Character.isDigit(str_arr[i]))
                 res.add(parseDigit(str_arr,i));
+            else if(str_arr[i] == 's') {
+                res.add(""+str_arr[i] + str_arr[i + 1] + str_arr[i + 2]);
+                str_arr[i] = ';';
+                str_arr[i + 1] = ';';
+                str_arr[i + 2] = ';';
+            }
+
             else
                 res.add(Character.toString(str_arr[i]));
         }
@@ -45,7 +53,6 @@ public class StringParser {
         }
         return num;
     }
-    
     public static boolean isDigit(String s){
         try {
             Integer.parseInt(s);
@@ -54,5 +61,5 @@ public class StringParser {
         }
         return true;
     }
-
 }
+

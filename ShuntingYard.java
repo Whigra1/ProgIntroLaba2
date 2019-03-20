@@ -4,7 +4,7 @@ public class ShuntingYard {
 
     private enum Operator
     {
-        ADD(1), SUBTRACT(2), MULTIPLY(3), DIVIDE(4), POW(5);
+        ADD(1), SUBTRACT(2), MULTIPLY(3), DIVIDE(4), POW(5), SIN(6);
         final int precedence;
         Operator(int p) { precedence = p; }
     }
@@ -15,6 +15,7 @@ public class ShuntingYard {
         put("*", Operator.MULTIPLY);
         put("/", Operator.DIVIDE);
         put("^", Operator.POW);
+        put("sin",Operator.SIN);
     }};
 
     private static boolean isHigerPrec(String op, String sub)
@@ -22,7 +23,7 @@ public class ShuntingYard {
         return (ops.containsKey(sub) && ops.get(sub).precedence >= ops.get(op).precedence);
     }
 
-    public static QueueArray toPostfix(String str){
+    public static QueueArray<String> toPostfix(String str){
         ArrayList<String> tokens = StringParser.parseString(str);
         StackArray<String> s = new StackArray<>(tokens.size());
         QueueArray<String> q = new QueueArray<>(tokens.size());
@@ -49,7 +50,9 @@ public class ShuntingYard {
         for (int i = 0; i < size;i++){
             q.add(s.pop());
         }
+        q.print();
         return q;
+
     }
 
 }

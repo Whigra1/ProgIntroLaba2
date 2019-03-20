@@ -17,6 +17,8 @@ public class Main {
                 s.push(elem);
             else if(elem.equals("!"))
                 s.push(String.valueOf(Double.parseDouble(s.pop()) * -1));
+            else if(elem.equals("sin"))
+                s.push(String.valueOf(Math.sin(Double.parseDouble(s.pop()))));
             else {
                 double a = Double.parseDouble(s.pop());
                 double b = Double.parseDouble(s.pop());
