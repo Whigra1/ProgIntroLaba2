@@ -1,9 +1,9 @@
-package laba2;
+package OOOP3;
 // Реалізація черги на массивах
 public class QueueArray<E> {
     private int first = 0;
     private int last = 0;
-    private int size = 0;
+    private int size;
     private E[] queue;
     public QueueArray(int size){
         queue = (E []) new Object[size];
@@ -17,9 +17,12 @@ public class QueueArray<E> {
         last++;
     }
     public E pop(){
-        E elem = queue[first];
-        first++;
-        return elem;
+        if (!isEmpty()) {
+            E elem = queue[first];
+            first++;
+            return elem;
+        }
+        return null;
     }
     public void print(){
         System.out.print("[ ");
@@ -31,7 +34,7 @@ public class QueueArray<E> {
     }
 
     public boolean isEmpty(){
-       return size==0;
+       return queue[first] == null;
     }
 
     private void resize(int new_size){
@@ -44,6 +47,20 @@ public class QueueArray<E> {
 
     public int getSize(){
         return size;
+    }
+
+    public static void main(String[] args) {
+        QueueArray<Integer> q = new QueueArray<>(10);
+        System.out.println(q.isEmpty());
+        q.add(5);
+        q.add(7);
+        q.add(8);
+        System.out.println(q.isEmpty());
+        q.pop();
+        q.pop();
+        q.pop();
+        System.out.println(q.isEmpty());
+        q.print();
     }
 
 }
